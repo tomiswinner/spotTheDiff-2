@@ -18,7 +18,7 @@ export class TitleScene extends Phaser.Scene {
 
     // クリックでメインシーンへ移動
     zone.on('pointerdown', () => {
-      this.scene.start('main', { timelineID: 'start'})
+      this.scene.start('story', { timelineID: 'start'})
     })
   }
 }
