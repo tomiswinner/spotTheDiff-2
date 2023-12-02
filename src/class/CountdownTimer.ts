@@ -1,4 +1,4 @@
-export default class CountdownTimer {
+export class CountdownTimer {
   private scene: Phaser.Scene
   private timerEvent?: Phaser.Time.TimerEvent
   private duration: number = 0
