@@ -15,6 +15,7 @@ export class GameManager {
   public rightImage: Phaser.GameObjects.Image
   private scoreManager: ScoreManager  
   private countdownTimer: CountdownTimer 
+  private spots: Phaser.GameObjects.Zone[] = []
   /** @param ゲーム失敗時のコールバック */
   private failedCallback: () => void
   /** @param finishedCallback ゲームがクリアになった時のコールバック */
@@ -33,7 +34,8 @@ export class GameManager {
       if (!spot) {
         continue
       } 
-      this.generateSpot(spot.x, spot.y, spot.width, spot.height)
+      // spot を作成して、scene と spots に追加
+      this.spots.push(this.scene.add.existing(this.generateSpot(spot.x, spot.y, spot.width, spot.height)))
     } 
 
     // スコアマネージャー作成
@@ -53,6 +55,22 @@ export class GameManager {
 
     // ゲームスタート
     this.startGame()
+  }
+
+  /**
+   * ゲームをポーズする
+   */
+  public pauseGame() {
+    this.countdownTimer.pause()
+    this.disableSpots()
+  }
+
+  /**
+   * ゲームを再開する
+   */
+  public resumeGame() {
+    this.countdownTimer.resume()
+    this.enableSpots()
   }
 
   private startGame() {
@@ -103,7 +121,29 @@ export class GameManager {
       spot.destroy()
       graphics.destroy()
     })
+    return spot
   }
+
+  /**
+   * 間違ってる箇所をクリックできないようにする
+   */
+  private disableSpots() {
+    this.spots.forEach(spot => {
+      spot.removeInteractive()
+    })
+  }
+
+  /**
+   * 間違ってる箇所をクリックできるようにする
+   */
+  private enableSpots() {
+    this.spots.forEach(spot => {
+      spot.setInteractive({
+        useHandCursor: true
+      })
+    })
+  }
+
 
   /**
    * 正解オブジェクトの作成
@@ -118,4 +158,5 @@ export class GameManager {
     graphics.lineStyle(thickness, 0x00ff00, 0.5); // 線の太さ、色（緑）、不透明度
     graphics.strokeCircle(x, y, outerRadius - thickness / 2);
   }
+
 }

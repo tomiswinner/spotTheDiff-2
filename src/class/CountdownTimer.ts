@@ -31,6 +31,24 @@ export class CountdownTimer {
     })
   }
 
+  /**
+   * タイマーを一時停止する
+   */
+  pause() {
+    if (this.timerEvent) {
+      this.timerEvent.paused = true
+    }
+  }
+
+  /**
+   * タイマーを再開する
+   */
+  resume() {
+    if (this.timerEvent) {
+      this.timerEvent.paused = false
+    }
+  }
+
   /**  
    * タイマーを止める
   */
@@ -42,10 +60,12 @@ export class CountdownTimer {
   }
 
   update() {
-    if (!this.timerEvent || this.duration <= 0) {
+    // タイマーが開始してるか、duration が 0 か、一時停止中ならタイマーを更新しない
+    if (!this.timerEvent || this.duration <= 0 || this.timerEvent.paused) {
       return
     }
 
+    // elapsed は経過時間
     const elapsed = this.timerEvent.getElapsed()
     const remaining = this.duration - elapsed
     const seconds = remaining / 1000
