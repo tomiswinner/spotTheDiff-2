@@ -1,0 +1,8 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "allowJs": true
+  },
+  "include": ["src", ".*.js", "*.js"]
+}
+// npx tsc --showConfig --project tsconfig.eslint.json で設定内容が問題ないかチェックできる
