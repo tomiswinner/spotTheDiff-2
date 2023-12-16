@@ -30,5 +30,7 @@ module.exports = {
   // default export は、named export に比べて、import する側での名前を強制できるため、default を使う
   rules: {
     'import/prefer-default-export': 'off',
+    // 200文字まで一行に書ける
+    'max-len': ['error', { code: 200 }],
   },
 };
