@@ -34,11 +34,9 @@ export class StopButton extends Phaser.GameObjects.Zone {
     });
   }
 
-  /**
-   * ゲームを一時停止する
-   */
+  /** ゲームを一時停止する */
   // TODO: GameManager にもポーズ機能を実装する
-  public pauseGame() {
+  private pauseGame() {
     if (!this.isButtonEnabled) return;
 
     this.gameManager.pauseGame();
@@ -47,10 +45,8 @@ export class StopButton extends Phaser.GameObjects.Zone {
     this.menuScreen.setVisible(true);
   }
 
-  /**
-   * ゲームを再開する
-   */
-  public resumeGame() {
+  /** ゲームを再開する */
+  private resumeGame() {
     if (!this.isButtonEnabled) return;
     this.gameManager.resumeGame();
     this.text.setText('STOP');

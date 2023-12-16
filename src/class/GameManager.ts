@@ -11,9 +11,9 @@ type GameManagerConfig = {
 };
 
 export class GameManager {
-  public leftImage: Phaser.GameObjects.Image;
+  private leftImage: Phaser.GameObjects.Image;
 
-  public rightImage: Phaser.GameObjects.Image;
+  private rightImage: Phaser.GameObjects.Image;
 
   private scoreManager: ScoreManager;
 
@@ -21,7 +21,7 @@ export class GameManager {
 
   private spots: Phaser.GameObjects.Zone[] = [];
 
-  public isGamePaused: boolean = false;
+  private isGamePaused: boolean = false;
 
   /** @param ゲーム失敗時のコールバック */
   private failedCallback: () => void;

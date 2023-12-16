@@ -45,7 +45,7 @@ npm はパッケージ管理ツールなので、パッケージとしてイン�
 export const hello_world = "Hello World";
 ```
 
-## TS で ESLint を使用する
+## TS で ESLint を使用するpublic 
 
 > TypeScript ESLintは2つのパッケージから成ります。@typescript-eslint/parserは、ESLintにTypeScriptの構文を理解させるためのパッケージです。@typescript-eslint/eslint-pluginは、TypeScript向けのルールを追加するパッケージです。
 - [参照](https://typescriptbook.jp/tutorials/eslint#typescript-eslint%E3%82%92%E5%B0%8E%E5%85%A5%E3%81%99%E3%82%8B)
