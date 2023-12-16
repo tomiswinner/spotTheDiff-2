@@ -1,5 +1,5 @@
-import { Timeline } from './Timeline'
+import { Timeline } from './Timeline';
 
 export type Timelines = {
   [timelineID: string]: Timeline
-}
+};

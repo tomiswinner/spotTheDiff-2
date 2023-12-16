@@ -5,11 +5,10 @@ import { GameScene } from './scenes/GameScene';
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO, // webGLかCanvasかを phaser が自動で判定してくれる
   width: 800,
-  height: 600,
+  height: 800,
   parent: 'game-app',
   // scene: Scenes,
-  scene: GameScene
-}
+  scene: GameScene,
+};
 
-
-new Phaser.Game(config)
+new Phaser.Game(config);
