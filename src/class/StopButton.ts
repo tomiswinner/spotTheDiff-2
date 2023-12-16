@@ -3,8 +3,6 @@ import { GameManager } from './GameManager';
 export class StopButton extends Phaser.GameObjects.Zone {
   private text: Phaser.GameObjects.Text;
 
-  private isGameStopped: boolean = false;
-
   private isButtonEnabled: boolean = true;
 
   private graphics: Phaser.GameObjects.Graphics;
@@ -28,7 +26,7 @@ export class StopButton extends Phaser.GameObjects.Zone {
     this.graphics.fillRect(x, y, width, height);
 
     this.on('pointerdown', () => {
-      if (this.isGameStopped) {
+      if (this.gameManager.isGamePaused) {
         this.resumeGame();
       } else {
         this.pauseGame();
@@ -47,7 +45,6 @@ export class StopButton extends Phaser.GameObjects.Zone {
     this.text.setText('RESTART');
     // メニューを表示する
     this.menuScreen.setVisible(true);
-    this.isGameStopped = true;
   }
 
   /**
@@ -59,7 +56,6 @@ export class StopButton extends Phaser.GameObjects.Zone {
     this.text.setText('STOP');
     // メニューを非表示にする
     this.menuScreen.setVisible(false);
-    this.isGameStopped = false;
   }
 
   public disableButton() {

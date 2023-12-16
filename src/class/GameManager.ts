@@ -21,6 +21,8 @@ export class GameManager {
 
   private spots: Phaser.GameObjects.Zone[] = [];
 
+  public isGamePaused: boolean = false;
+
   /** @param ゲーム失敗時のコールバック */
   private failedCallback: () => void;
 
@@ -65,6 +67,7 @@ export class GameManager {
    */
   public pauseGame() {
     this.countdownTimer.pause();
+    this.isGamePaused = true;
     this.disableSpots();
   }
 
@@ -73,6 +76,7 @@ export class GameManager {
    */
   public resumeGame() {
     this.countdownTimer.resume();
+    this.isGamePaused = false;
     this.enableSpots();
   }
 
